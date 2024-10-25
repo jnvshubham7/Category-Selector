@@ -55,9 +55,13 @@ class _CategorySelectorState extends State<CategorySelector> {
           // Drawer for Category List
           Container(
             width: 100,
+            decoration: BoxDecoration(
+              border: Border(
+                right: BorderSide(color: Colors.grey[300]!, width: 1),
+              ),
+            ),
             child: ListView.builder(
               itemCount: categorizedItems.length,
-              scrollDirection: Axis.vertical,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
@@ -66,20 +70,37 @@ class _CategorySelectorState extends State<CategorySelector> {
                     });
                   },
                   child: Container(
-                    color: index == _selectedCategoryIndex
-                        ? Colors.grey[200]
-                        : Colors.white,
-                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: index == _selectedCategoryIndex
+                          ? Colors.grey[100]
+                          : Colors.white,
+                      border: Border(
+                        left: BorderSide(
+                          color: index == _selectedCategoryIndex
+                              ? Colors.blue // Customize border color for selection
+                              : Colors.transparent,
+                          width: 4,
+                        ),
+                      ),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                     child: Column(
-                      mainAxisSize: MainAxisSize.min,
                       children: [
                         CircleAvatar(
-                          // Replace with category-specific icons
-                          backgroundImage: AssetImage(
-                              'assets/image.png'),
+                          backgroundImage: AssetImage('assets/icon.png'), // Replace with category-specific icon
                         ),
                         SizedBox(height: 8),
-                        Text(categorizedItems[index]["category"]),
+                        Text(
+                          categorizedItems[index]["category"],
+                          style: TextStyle(
+                            fontWeight: index == _selectedCategoryIndex
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                            color: index == _selectedCategoryIndex
+                                ? Colors.blue
+                                : Colors.black,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -134,19 +155,26 @@ class CategorySection extends StatelessWidget {
             itemCount: 6, // Number of items in each subcategory
             itemBuilder: (context, index) {
               return Card(
-                elevation: 2,
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
                 child: Column(
                   children: [
                     Expanded(
-                      child: Image.asset(
-                        'assets/image.png', // Replace with actual image path
-                        fit: BoxFit.cover,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                        child: Image.asset(
+                          'assets/image.png', // Replace with actual image path
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(4.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'Product Name', // Replace with actual product name
+                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                         textAlign: TextAlign.center,
                       ),
                     ),
