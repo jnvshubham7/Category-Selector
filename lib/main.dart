@@ -76,7 +76,7 @@ class _CategorySelectorState extends State<CategorySelector> {
                         CircleAvatar(
                           // Replace with category-specific icons
                           backgroundImage: AssetImage(
-                              'assets/${categorizedItems[index]["category"].toLowerCase()}.png'),
+                              'assets/image.png'),
                         ),
                         SizedBox(height: 8),
                         Text(categorizedItems[index]["category"]),
@@ -139,7 +139,7 @@ class CategorySection extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Image.asset(
-                        'assets/sample_product.png', // Replace with actual image path
+                        'assets/image.png', // Replace with actual image path
                         fit: BoxFit.cover,
                       ),
                     ),
