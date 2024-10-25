@@ -24,28 +24,21 @@ class CategorySelector extends StatefulWidget {
 class _CategorySelectorState extends State<CategorySelector> {
   int _selectedCategoryIndex = 0;
 
-  final List<String> categories = [
-    "Kids",
-    "Mobile",
-    "Electronics",
-    "Women",
-    "Men",
-    "Decor",
-    "Furniture"
+  final List<Map<String, dynamic>> categorizedItems = [
+    {"category": "Kids", "subcategories": ["Boys", "Girls", "Toys", "Clothing"]},
+    {"category": "Mobile", "subcategories": ["Smartphones", "Accessories", "Tablets"]},
+    {"category": "Electronics", "subcategories": ["Laptops", "Cameras", "Accessories"]},
+    {"category": "Women", "subcategories": ["Upper wear", "Lower wear", "Beauty Product", "Inner wear"]},
+    {"category": "Men", "subcategories": ["Shirts", "Pants", "Accessories"]},
+    {"category": "Decor", "subcategories": ["Wall Art", "Lighting", "Furniture"]},
+    {"category": "Furniture", "subcategories": ["Sofas", "Tables", "Chairs"]},
   ];
-
-  final Map<String, List<String>> subcategories = {
-    "Women": ["Upper wear", "Lower wear", "Beauty Product", "Inner wear"],
-    // Add more categories and their subcategories as needed
-  };
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Categories",
-        ),
+        title: Text("Categories"),
         actions: [
           IconButton(
             icon: Icon(Icons.favorite_border),
@@ -63,9 +56,8 @@ class _CategorySelectorState extends State<CategorySelector> {
           Container(
             width: 100,
             child: ListView.builder(
-              itemCount: categories.length,
-              scrollDirection:
-                  Axis.vertical, // Make ListView scroll horizontally
+              itemCount: categorizedItems.length,
+              scrollDirection: Axis.vertical,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
@@ -73,26 +65,23 @@ class _CategorySelectorState extends State<CategorySelector> {
                       _selectedCategoryIndex = index;
                     });
                   },
-
                   child: Container(
                     color: index == _selectedCategoryIndex
                         ? Colors.grey[200]
                         : Colors.white,
                     padding: EdgeInsets.all(8),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      CircleAvatar(
-                        // Replace this with category-specific icons
-                        backgroundImage: AssetImage(
-                            'assets/${categories[index].toLowerCase()}.png'),
-                      ),
-                      SizedBox(
-                          height:
-                              8), // Add spacing between the icon and the text
-                      Text(categories[index]),
-                    ],
-                  ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CircleAvatar(
+                          // Replace with category-specific icons
+                          backgroundImage: AssetImage(
+                              'assets/${categorizedItems[index]["category"].toLowerCase()}.png'),
+                        ),
+                        SizedBox(height: 8),
+                        Text(categorizedItems[index]["category"]),
+                      ],
+                    ),
                   ),
                 );
               },
@@ -104,7 +93,7 @@ class _CategorySelectorState extends State<CategorySelector> {
             child: ListView(
               children: [
                 for (String subcategory
-                    in subcategories[categories[_selectedCategoryIndex]] ?? [])
+                    in categorizedItems[_selectedCategoryIndex]["subcategories"])
                   CategorySection(subcategory: subcategory),
               ],
             ),
