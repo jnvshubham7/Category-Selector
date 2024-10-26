@@ -216,7 +216,7 @@ class _CategorySelectorState extends State<CategorySelector> {
                               const Expanded(
                                 child: Padding(
                                   padding:
-                                      EdgeInsets.only(top: 8.0, right: 10.0),
+                                      EdgeInsets.only(top: 6.0, right: 10.0 , left: 10.0),
                                   child: Divider(
                                     color: Colors.black26,
                                     thickness: 1,
@@ -283,50 +283,48 @@ class CategorySection extends StatelessWidget {
                 ),
                 itemCount: 6,
                 itemBuilder: (context, index) {
-                  return Container(
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: ClipRRect(
-                            borderRadius: const BorderRadius.vertical(
-                                top: Radius.circular(8)),
-                            child: Image.asset(
-                              'assets/image.png',
-                              fit: BoxFit.cover,
-                            ),
+                  return Column(
+                    children: [
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(8)),
+                          child: Image.asset(
+                            'assets/image.png',
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        Container(
-                          width: 67.98,
-                          height: 21.24,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.white, width: 0.5),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.06),
-                                blurRadius: 6.0,
-                                offset: const Offset(0, 2),
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Fusion Wear',
-                              style: TextStyle(
-                                fontFamily: 'Manrope',
-                                fontWeight: FontWeight.w500,
-                                fontSize: 10,
-                                height: 1.8,
-                                color: Colors.black.withOpacity(0.8),
-                              ),
-                              textAlign: TextAlign.center,
+                      ),
+                      Container(
+                        width: 67.98,
+                        height: 21.24,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.white, width: 0.5),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.06),
+                              blurRadius: 6.0,
+                              offset: const Offset(0, 2),
                             ),
+                          ],
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Fusion Wear',
+                            style: TextStyle(
+                              fontFamily: 'Manrope',
+                              fontWeight: FontWeight.w500,
+                              fontSize: 10,
+                              height: 1.8,
+                              color: Colors.black.withOpacity(0.8),
+                            ),
+                            textAlign: TextAlign.center,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   );
                 },
               ),
