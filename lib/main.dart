@@ -83,7 +83,7 @@ class _CategorySelectorState extends State<CategorySelector> {
             tooltip: 'Go back',
           ),
         ),
-        title: Text(
+        title: const Text(
           'Categories',
           style: TextStyle(
             fontFamily: 'Manrope',
@@ -117,14 +117,14 @@ class _CategorySelectorState extends State<CategorySelector> {
                   // padding: EdgeInsets.symmetric(vertical: 8.0),
                   width: 100,
                   decoration: BoxDecoration(
-                    color: Color(0xFFF8F7FE),
+                    color: const Color(0xFFF8F7FE),
 
                     // add shsow in right side
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.06),
                         blurRadius: 6.0,
-                        offset: Offset(0, 2),
+                        offset: const Offset(0, 2),
                       ),
                     ],
 
@@ -151,12 +151,12 @@ class _CategorySelectorState extends State<CategorySelector> {
                               // unslected color background: #F8F7FE;
                               color: index == _selectedCategoryIndex
                                   ? Colors.white
-                                  : Color(0xFFF8F7FE),
+                                  : const Color(0xFFF8F7FE),
 
                               border: Border(
                                 left: BorderSide(
                                   color: index == _selectedCategoryIndex
-                                      ? Color(0xFF8034DA)
+                                      ? const Color(0xFF8034DA)
                                       : Colors.transparent,
                                   width: 6,
                                 ),
@@ -171,11 +171,11 @@ class _CategorySelectorState extends State<CategorySelector> {
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.06),
                                   blurRadius: 6.0,
-                                  offset: Offset(0, 2),
+                                  offset: const Offset(0, 2),
                                 ),
                               ],
                             ),
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 16, horizontal: 8),
                             child: Column(
                               children: [
@@ -186,7 +186,7 @@ class _CategorySelectorState extends State<CategorySelector> {
                                       // 'assets/kids.png',
                                       categorizedItems[index]["icon"]),
                                 ),
-                                SizedBox(height: 8),
+                                const SizedBox(height: 8),
                                 Text(
                                   categorizedItems[index]["category"],
                                   style: TextStyle(
@@ -213,27 +213,27 @@ class _CategorySelectorState extends State<CategorySelector> {
                     data: ScrollbarThemeData(
                       thumbColor: MaterialStateProperty.all(Colors.black26),
                       thickness: MaterialStateProperty.all(4),
-                      radius: Radius.circular(4),
+                      radius: const Radius.circular(4),
                     ),
                     child: ListView(
                       children: [
                         Padding(
                           //
-                          padding: const EdgeInsets.fromLTRB(8, 15, 8, 8),
+                          padding: const EdgeInsets.fromLTRB(15, 15, 8, 8),
                           child: Row(
                             children: [
                               Text(
                                 categorizedItems[_selectedCategoryIndex]
                                     ["category"],
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 12,
                                   color: Colors.black54,
                                 ),
                               ),
-                              SizedBox(width: 8),
-                              Expanded(
+                              const SizedBox(width: 8),
+                              const Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.only(
+                                  padding: EdgeInsets.only(
                                       top: 8.0, right: 10.0),
                                   child: Divider(
                                     color: Colors.black26,
@@ -272,10 +272,10 @@ class CategorySection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.fromLTRB(15, 8, 8, 8),
           child: Text(
             subcategory,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'Manrope',
               fontSize: 14,
               fontWeight: FontWeight.w600,
@@ -283,19 +283,25 @@ class CategorySection extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+
+        Padding(padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
+
+
+         child:SizedBox(
           height: 250,
           child: SingleChildScrollView(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             child: GridView.builder(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               scrollDirection: Axis.vertical,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
+                mainAxisSpacing: 10,
+                
+                crossAxisSpacing: 10,
                 childAspectRatio: 0.75,
+                // this ratio means 
               ),
               itemCount: 6,
               itemBuilder: (context, index) {
@@ -305,7 +311,7 @@ class CategorySection extends StatelessWidget {
                       Expanded(
                         child: ClipRRect(
                           borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(8)),
+                              const BorderRadius.vertical(top: Radius.circular(8)),
                           child: Image.asset(
                             'assets/image.png',
                             fit: BoxFit.cover,
@@ -322,7 +328,7 @@ class CategorySection extends StatelessWidget {
                             BoxShadow(
                               color: Colors.black.withOpacity(0.06),
                               blurRadius: 6.0,
-                              offset: Offset(0, 2),
+                              offset: const Offset(0, 2),
                             ),
                           ],
                           borderRadius: BorderRadius.circular(5),
@@ -348,6 +354,10 @@ class CategorySection extends StatelessWidget {
             ),
           ),
         ),
+        
+        )
+        
+       
       ],
     );
   }
