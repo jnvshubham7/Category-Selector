@@ -1,4 +1,4 @@
-# category_selector_app
+# Category-Selector
 
 A new Flutter project.
 
