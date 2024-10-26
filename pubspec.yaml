@@ -87,12 +87,12 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
 
-  # fonts:
-  # - family: Manrope
-  #   fonts:
-  #     - asset: fonts/Manrope-Regular.ttf
-  #     - asset: fonts/Manrope-Medium.ttf
-  #     - asset: fonts/Manrope-Bold.ttf
+  fonts:
+  - family: Manrope
+    fonts:
+      - asset: fonts/Manrope-Regular.ttf
+      - asset: fonts/Manrope-Medium.ttf
+      - asset: fonts/Manrope-Bold.ttf
 
 
   # fonts:
