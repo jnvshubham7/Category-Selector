@@ -25,13 +25,39 @@ class _CategorySelectorState extends State<CategorySelector> {
   int _selectedCategoryIndex = 0;
 
   final List<Map<String, dynamic>> categorizedItems = [
-    {"category": "Kids", "subcategories": ["Boys", "Girls", "Toys", "Clothing"]},
-    {"category": "Mobile", "subcategories": ["Smartphones", "Accessories", "Tablets"]},
-    {"category": "Electronics", "subcategories": ["Laptops", "Cameras", "Accessories"]},
-    {"category": "Women", "subcategories": ["Upper wear", "Lower wear", "Beauty Product", "Inner wear"]},
-    {"category": "Men", "subcategories": ["Shirts", "Pants", "Accessories"]},
-    {"category": "Decor", "subcategories": ["Wall Art", "Lighting", "Furniture"]},
-    {"category": "Furniture", "subcategories": ["Sofas", "Tables", "Chairs"]},
+    {
+      "category": "Kids",
+      "subcategories": ["Boys", "Girls", "Toys", "Clothing"]
+    },
+    {
+      "category": "Mobile",
+      "subcategories": ["Smartphones", "Accessories", "Tablets"]
+    },
+    {
+      "category": "Electronics",
+      "subcategories": ["Laptops", "Cameras", "Accessories"]
+    },
+    {
+      "category": "Women",
+      "subcategories": [
+        "Upper wear",
+        "Lower wear",
+        "Beauty Product",
+        "Inner wear"
+      ]
+    },
+    {
+      "category": "Men",
+      "subcategories": ["Shirts", "Pants", "Accessories"]
+    },
+    {
+      "category": "Decor",
+      "subcategories": ["Wall Art", "Lighting", "Furniture"]
+    },
+    {
+      "category": "Furniture",
+      "subcategories": ["Sofas", "Tables", "Chairs"]
+    },
   ];
 
   @override
@@ -72,12 +98,13 @@ class _CategorySelectorState extends State<CategorySelector> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: index == _selectedCategoryIndex
-                          ? Colors.grey[100]
-                          : Colors.white,
+                          ? Colors.white
+                          : Colors.grey[100],
                       border: Border(
                         left: BorderSide(
                           color: index == _selectedCategoryIndex
-                              ? Colors.blue // Customize border color for selection
+                              ? Color(
+                                  0xFF8034DA) // Customize border color for selection
                               : Colors.transparent,
                           width: 4,
                         ),
@@ -87,19 +114,25 @@ class _CategorySelectorState extends State<CategorySelector> {
                     child: Column(
                       children: [
                         CircleAvatar(
-                          backgroundImage: AssetImage('assets/icon.png'), // Replace with category-specific icon
+                          backgroundImage: AssetImage(
+                              'assets/icon.png'), // Replace with category-specific icon
                         ),
                         SizedBox(height: 8),
                         Text(
                           categorizedItems[index]["category"],
                           style: TextStyle(
-                            fontWeight: index == _selectedCategoryIndex
-                                ? FontWeight.bold
-                                : FontWeight.normal,
+                            fontFamily:
+                                'Manrope', // Make sure to add the Manrope font in your pubspec.yaml
+                            fontSize: 12, // font-size: 12px;
+                            fontWeight: FontWeight.w500, // font-weight: 500;
+                            height: 18 /
+                                12, // line-height: 18px; (line-height in TextStyle is a multiplier)
                             color: index == _selectedCategoryIndex
-                                ? Colors.blue
-                                : Colors.black,
+                                ? Colors.black
+                                : Colors.black54,
+                            // textAlign: TextAlign.center, // Optional, add if you need to center the text
                           ),
+                          textAlign: TextAlign.center, // Centering the text
                         ),
                       ],
                     ),
@@ -113,8 +146,33 @@ class _CategorySelectorState extends State<CategorySelector> {
           Expanded(
             child: ListView(
               children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        categorizedItems[_selectedCategoryIndex]["category"],
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black54,
+                        ),
+                      ),
+                      SizedBox(width: 8), // Small space between text and line
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 8.0, right: 10.0),
+                          child: Divider(
+                            color: Colors.black26, // Line color
+                            thickness: 1, // Line thickness
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 for (String subcategory
-                    in categorizedItems[_selectedCategoryIndex]["subcategories"])
+                    in categorizedItems[_selectedCategoryIndex]
+                        ["subcategories"])
                   CategorySection(subcategory: subcategory),
               ],
             ),
@@ -139,7 +197,13 @@ class CategorySection extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             subcategory,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontFamily: 'Manrope', // Custom font family
+              fontSize: 14, // Matches font-size: 14px
+              fontWeight: FontWeight.w600, // Matches font-weight: 600
+              height:
+                  1.29, // Matches line-height: 18px / 14px (18px / 14px = ~1.29)
+            ),
           ),
         ),
         SizedBox(
@@ -154,28 +218,51 @@ class CategorySection extends StatelessWidget {
             ),
             itemCount: 6, // Number of items in each subcategory
             itemBuilder: (context, index) {
-              return Card(
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
+              return Container(
+                // elevation: 4,
+                // shape: RoundedRectangleBorder(
+                //   borderRadius: BorderRadius.circular(8),
+                // ),
                 child: Column(
                   children: [
                     Expanded(
                       child: ClipRRect(
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(8)),
                         child: Image.asset(
                           'assets/image.png', // Replace with actual image path
                           fit: BoxFit.cover,
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Product Name', // Replace with actual product name
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-                        textAlign: TextAlign.center,
+                    Container(
+                      width: 67.98,
+                      height: 21.24,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.white, width: 0.5),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.06),
+                            blurRadius: 6.0,
+                            offset: Offset(0, 2),
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Fusion Wear', // Replace with actual text
+                          style: TextStyle(
+                            fontFamily: 'Manrope',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 10,
+                            height:
+                                1.8, // This sets the line-height (line height divided by font size)
+                            color: Colors.black.withOpacity(0.8),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
                   ],
