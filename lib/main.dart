@@ -212,7 +212,7 @@ class _CategorySelectorState extends State<CategorySelector> {
                                   color: Colors.black54,
                                 ),
                               ),
-                              const SizedBox(width: 8),
+                              // const SizedBox(width: 8),
                               const Expanded(
                                 child: Padding(
                                   padding:
@@ -254,7 +254,7 @@ class CategorySection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 8, 8, 8),
+          padding: const EdgeInsets.fromLTRB(15, 0, 8, 0),
           child: Text(
             subcategory,
             style: const TextStyle(
@@ -266,9 +266,9 @@ class CategorySection extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
+          padding: const EdgeInsets.fromLTRB(20, 15, 8, 0),
           child: SizedBox(
-            height: 250,
+            height: 230,
             child: SingleChildScrollView(
               physics: const NeverScrollableScrollPhysics(),
               child: GridView.builder(
