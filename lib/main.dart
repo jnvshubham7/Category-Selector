@@ -111,17 +111,12 @@ class _CategorySelectorState extends State<CategorySelector> {
                                     0xFF8034DA) // Customize border color for selection
                                 : Colors.transparent,
                             width: 4,
-                            
-                            
                           ),
-
                           bottom: BorderSide(
                             color: Colors.grey[300]!,
                             width: 1,
                           ),
                         ),
-
-
                       ),
                       padding:
                           EdgeInsets.symmetric(vertical: 16, horizontal: 8),
@@ -148,7 +143,6 @@ class _CategorySelectorState extends State<CategorySelector> {
                           ),
 
                           // Add a divider to separate each category
-                          
                         ],
                       ),
                     ),
@@ -160,37 +154,51 @@ class _CategorySelectorState extends State<CategorySelector> {
 
           // Main Content Area
           Expanded(
-            child: ListView(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        categorizedItems[_selectedCategoryIndex]["category"],
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black54,
-                        ),
-                      ),
-                      SizedBox(width: 8), // Small space between text and line
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 8.0, right: 10.0),
-                          child: Divider(
-                            color: Colors.black26, // Line color
-                            thickness: 1, // Line thickness
+            child: ScrollbarTheme(
+              data: ScrollbarThemeData(
+                thumbColor: MaterialStateProperty.all(
+                    Colors.black26), // Adjust color if needed
+                thickness: MaterialStateProperty.all(
+                    4), // Set this to control the scroll thumb width
+                radius: Radius.circular(4), // Control thumb roundness
+              ),
+              child: Scrollbar(
+                // thickness: 1, // Set a smaller thickness for a narrower scrollbar
+                child: ListView(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            categorizedItems[_selectedCategoryIndex]
+                                ["category"],
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black54,
+                            ),
                           ),
-                        ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 8.0, right: 10.0),
+                              child: Divider(
+                                color: Colors.black26,
+                                thickness: 1,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    for (String subcategory
+                        in categorizedItems[_selectedCategoryIndex]
+                            ["subcategories"])
+                      CategorySection(subcategory: subcategory),
+                  ],
                 ),
-                for (String subcategory
-                    in categorizedItems[_selectedCategoryIndex]
-                        ["subcategories"])
-                  CategorySection(subcategory: subcategory),
-              ],
+              ),
             ),
           ),
         ],
