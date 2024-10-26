@@ -77,7 +77,7 @@ class _CategorySelectorState extends State<CategorySelector> {
         leading: Container(
           // margin: const EdgeInsets.only(left: 10.0),
           child: IconButton(
-            icon: Image.asset('assets/back.png', width: 40, height: 40),
+            icon: Image.asset('assets/back.png', width: 32, height: 32),
             onPressed: () {},
             // splashRadius: 10,
             tooltip: 'Go back',
@@ -95,11 +95,11 @@ class _CategorySelectorState extends State<CategorySelector> {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.favorite_outline_sharp),
+            icon: Image.asset('assets/love.png', width: 24, height: 24),
             onPressed: () {},
           ),
           IconButton(
-            icon: Image.asset('assets/cart.png', width: 26, height: 26),
+            icon: Image.asset('assets/cart.png', width: 24, height: 24),
             onPressed: () {},
           ),
         ],
@@ -114,12 +114,23 @@ class _CategorySelectorState extends State<CategorySelector> {
             child: Row(
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  // padding: EdgeInsets.symmetric(vertical: 8.0),
                   width: 100,
                   decoration: BoxDecoration(
-                    border: Border(
-                      right: BorderSide(color: Colors.grey[300]!, width: 1),
-                    ),
+                    color: Color(0xFFF8F7FE),
+
+                    // add shsow in right side
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.06),
+                        blurRadius: 6.0,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+
+                    // border: Border(
+                    //   right: BorderSide(color: Colors.grey[300]!, width: 1),
+                    // ),
                   ),
                   child: ScrollConfiguration(
                     behavior: ScrollConfiguration.of(context).copyWith(
@@ -154,6 +165,15 @@ class _CategorySelectorState extends State<CategorySelector> {
                                   width: 1,
                                 ),
                               ),
+
+                              // add shadow right side
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.06),
+                                  blurRadius: 6.0,
+                                  offset: Offset(0, 2),
+                                ),
+                              ],
                             ),
                             padding: EdgeInsets.symmetric(
                                 vertical: 16, horizontal: 8),
@@ -198,14 +218,15 @@ class _CategorySelectorState extends State<CategorySelector> {
                     child: ListView(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          //
+                          padding: const EdgeInsets.fromLTRB(8, 15, 8, 8),
                           child: Row(
                             children: [
                               Text(
                                 categorizedItems[_selectedCategoryIndex]
                                     ["category"],
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 12,
                                   color: Colors.black54,
                                 ),
                               ),
