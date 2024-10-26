@@ -78,7 +78,6 @@ class _CategorySelectorState extends State<CategorySelector> {
       ),
       body: Row(
         children: [
-          // Drawer for Category List
           Container(
             width: 100,
             decoration: BoxDecoration(
@@ -107,10 +106,9 @@ class _CategorySelectorState extends State<CategorySelector> {
                         border: Border(
                           left: BorderSide(
                             color: index == _selectedCategoryIndex
-                                ? Color(
-                                    0xFF8034DA) // Customize border color for selection
+                                ? Color(0xFF8034DA)
                                 : Colors.transparent,
-                            width: 4,
+                            width: 6,
                           ),
                           bottom: BorderSide(
                             color: Colors.grey[300]!,
@@ -123,26 +121,22 @@ class _CategorySelectorState extends State<CategorySelector> {
                       child: Column(
                         children: [
                           CircleAvatar(
-                            backgroundImage: AssetImage(
-                                'assets/icon.png'), // Replace with category-specific icon
+                            backgroundImage: AssetImage('assets/icon.png'),
                           ),
                           SizedBox(height: 8),
                           Text(
                             categorizedItems[index]["category"],
                             style: TextStyle(
-                              fontFamily:
-                                  'Manrope', // Make sure to add the Manrope font in your pubspec.yaml
+                              fontFamily: 'Manrope',
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
-                              height: 18 / 12, // line-height: 18px
+                              height: 18 / 12,
                               color: index == _selectedCategoryIndex
                                   ? Colors.black
                                   : Colors.black54,
                             ),
-                            textAlign: TextAlign.center, // Centering the text
+                            textAlign: TextAlign.center,
                           ),
-
-                          // Add a divider to separate each category
                         ],
                       ),
                     ),
@@ -151,51 +145,46 @@ class _CategorySelectorState extends State<CategorySelector> {
               ),
             ),
           ),
-
-          // Main Content Area
           Expanded(
             child: ScrollbarTheme(
               data: ScrollbarThemeData(
-                thumbColor: MaterialStateProperty.all(
-                    Colors.black26), // Adjust color if needed
-                thickness: MaterialStateProperty.all(
-                    4), // Set this to control the scroll thumb width
-                radius: Radius.circular(4), // Control thumb roundness
+                thumbColor: MaterialStateProperty.all(Colors.black26),
+                thickness: MaterialStateProperty.all(4),
+                radius: Radius.circular(4),
               ),
-                child: ListView(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            categorizedItems[_selectedCategoryIndex]
-                                ["category"],
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black54,
+              child: ListView(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Text(
+                          categorizedItems[_selectedCategoryIndex]["category"],
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(top: 8.0, right: 10.0),
+                            child: Divider(
+                              color: Colors.black26,
+                              thickness: 1,
                             ),
                           ),
-                          SizedBox(width: 8),
-                          Expanded(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 8.0, right: 10.0),
-                              child: Divider(
-                                color: Colors.black26,
-                                thickness: 1,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    for (String subcategory
-                        in categorizedItems[_selectedCategoryIndex]
-                            ["subcategories"])
-                      CategorySection(subcategory: subcategory),
-                  ],
-                ),
+                  ),
+                  for (String subcategory
+                      in categorizedItems[_selectedCategoryIndex]
+                          ["subcategories"])
+                    CategorySection(subcategory: subcategory),
+                ],
+              ),
             ),
           ),
         ],
@@ -212,86 +201,86 @@ class CategorySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Text(
-        subcategory,
-        style: TextStyle(
-          fontFamily: 'Manrope', // Custom font family
-          fontSize: 14, // Matches font-size: 14px
-          fontWeight: FontWeight.w600, // Matches font-weight: 600
-          height: 1.29, // Matches line-height: 18px / 14px
-        ),
-      ),
-    ),
-    SizedBox(
-      height: 250,
-      child: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(), // Disables scrolling
-        child: GridView.builder(
-          shrinkWrap: true, // Allows GridView to occupy only needed space
-          physics: NeverScrollableScrollPhysics(), // Disables scrolling in GridView
-          scrollDirection: Axis.vertical,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            mainAxisSpacing: 8,
-            crossAxisSpacing: 8,
-            childAspectRatio: 0.75,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            subcategory,
+            style: TextStyle(
+              fontFamily: 'Manrope',
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              height: 1.29,
+            ),
           ),
-          itemCount: 6, // Number of items in each subcategory
-          itemBuilder: (context, index) {
-            return Container(
-              child: Column(
-                children: [
-                  Expanded(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
-                      child: Image.asset(
-                        'assets/image.png', // Replace with actual image path
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 67.98,
-                    height: 21.24,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.white, width: 0.5),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.06),
-                          blurRadius: 6.0,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Fusion Wear', // Replace with actual text
-                        style: TextStyle(
-                          fontFamily: 'Manrope',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 10,
-                          height: 1.8,
-                          color: Colors.black.withOpacity(0.8),
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
         ),
-      ),
-    ),
-  ],
-);
-
+        SizedBox(
+          height: 250,
+          child: SingleChildScrollView(
+            physics: NeverScrollableScrollPhysics(),
+            child: GridView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                mainAxisSpacing: 8,
+                crossAxisSpacing: 8,
+                childAspectRatio: 0.75,
+              ),
+              itemCount: 6,
+              itemBuilder: (context, index) {
+                return Container(
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(8)),
+                          child: Image.asset(
+                            'assets/image.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 67.98,
+                        height: 21.24,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.white, width: 0.5),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.06),
+                              blurRadius: 6.0,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Fusion Wear',
+                            style: TextStyle(
+                              fontFamily: 'Manrope',
+                              fontWeight: FontWeight.w500,
+                              fontSize: 10,
+                              height: 1.8,
+                              color: Colors.black.withOpacity(0.8),
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
