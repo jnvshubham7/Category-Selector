@@ -28,15 +28,18 @@ class _CategorySelectorState extends State<CategorySelector> {
   final List<Map<String, dynamic>> categorizedItems = [
     {
       "category": "Kids",
-      "subcategories": ["Boys", "Girls", "Toys", "Clothing"]
+      "subcategories": ["Boys", "Girls", "Toys", "Clothing"],
+      "icon": "assets/kids.png",
     },
     {
       "category": "Mobile",
-      "subcategories": ["Smartphones", "Accessories", "Tablets"]
+      "subcategories": ["Smartphones", "Accessories", "Tablets"],
+      "icon": "assets/phone.png",
     },
     {
       "category": "Electronics",
-      "subcategories": ["Laptops", "Cameras", "Accessories"]
+      "subcategories": ["Laptops", "Cameras", "Accessories"],
+      "icon": "assets/headphone.png",
     },
     {
       "category": "Women",
@@ -45,19 +48,23 @@ class _CategorySelectorState extends State<CategorySelector> {
         "Lower wear",
         "Beauty Product",
         "Inner wear"
-      ]
+      ],
+      "icon": "assets/icon.png",
     },
     {
       "category": "Men",
-      "subcategories": ["Shirts", "Pants", "Accessories"]
+      "subcategories": ["Shirts", "Pants", "Accessories"],
+      "icon": "assets/men.png",
     },
     {
       "category": "Decor",
-      "subcategories": ["Wall Art", "Lighting", "Furniture"]
+      "subcategories": ["Wall Art", "Lighting", "Furniture"],
+      "icon": "assets/decor.png",
     },
     {
       "category": "Furniture",
-      "subcategories": ["Sofas", "Tables", "Chairs"]
+      "subcategories": ["Sofas", "Tables", "Chairs"],
+      "icon": "assets/furniture.png",
     },
   ];
 
@@ -143,8 +150,15 @@ class _CategorySelectorState extends State<CategorySelector> {
                       child: Column(
                         children: [
                           CircleAvatar(
-                            backgroundImage: AssetImage('assets/icon.png'),
-                          ),
+                            backgroundColor: Color(0xFFE5E5E5),
+                            backgroundImage: AssetImage(
+
+                                // 'assets/kids.png',
+                                categorizedItems[index]["icon"]),
+
+
+                            ),
+                          
                           SizedBox(height: 8),
                           Text(
                             categorizedItems[index]["category"],
