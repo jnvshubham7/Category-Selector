@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: CategorySelector(),
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
         primarySwatch: Colors.purple,
       ),
     );
@@ -64,14 +65,59 @@ class _CategorySelectorState extends State<CategorySelector> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Categories"),
+        backgroundColor: Colors.white,
+        leading: Padding(
+          padding:
+              const EdgeInsets.all(6.0), // Add padding around the IconButton
+          child: Container(
+            width: 24, // Keep the circular border width
+            height: 24, // Keep the circular border height
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white, // Background color
+              border: Border.all(
+                color: Color(0xFFF5F1FE), // Border color
+                width: 1, // Border width
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.04),
+                  blurRadius: 53.2,
+                  offset: Offset(0, 4), // Shadow position
+                ),
+              ],
+            ),
+            child: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios,
+                size: 20, // Size of the icon
+                color: Colors.black, // Icon color
+              ),
+              onPressed: () {
+                // Define your onPressed function here
+              },
+              splashRadius: 10,
+              tooltip: 'Go back',
+            ),
+          ),
+        ),
+        title: Text(
+          'Categories',
+          style: TextStyle(
+            fontFamily: 'Manrope',
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            color: Color(0xFF0E0E0E),
+            height: 1.2,
+          ),
+        ),
         actions: [
           IconButton(
-            icon: Icon(Icons.favorite_border),
+            icon: Icon(Icons.favorite_outline_sharp),
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(Icons.shopping_cart_outlined),
+            icon: Image.asset('assets/cart.png', width: 26, height: 26),
             onPressed: () {},
           ),
         ],
