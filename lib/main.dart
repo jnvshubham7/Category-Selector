@@ -66,39 +66,15 @@ class _CategorySelectorState extends State<CategorySelector> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: Padding(
-          padding:
-              const EdgeInsets.all(6.0), // Add padding around the IconButton
-          child: Container(
-            width: 24, // Keep the circular border width
-            height: 24, // Keep the circular border height
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.white, // Background color
-              border: Border.all(
-                color: Color(0xFFF5F1FE), // Border color
-                width: 1, // Border width
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.04),
-                  blurRadius: 53.2,
-                  offset: Offset(0, 4), // Shadow position
-                ),
-              ],
-            ),
-            child: IconButton(
-              icon: Icon(
-                Icons.arrow_back_ios,
-                size: 20, // Size of the icon
-                color: Colors.black, // Icon color
-              ),
-              onPressed: () {
-                // Define your onPressed function here
-              },
-              splashRadius: 10,
-              tooltip: 'Go back',
-            ),
+        leading: Container(
+          // margin: const EdgeInsets.only(left: 10.0),
+          child: IconButton(
+            icon: Image.asset('assets/back.png', width: 40, height: 40),
+            onPressed: () {
+              // Define your onPressed function here
+            },
+            // splashRadius: 10,
+            tooltip: 'Go back',
           ),
         ),
         title: Text(
