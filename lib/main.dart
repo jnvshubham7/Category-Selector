@@ -162,8 +162,6 @@ class _CategorySelectorState extends State<CategorySelector> {
                     4), // Set this to control the scroll thumb width
                 radius: Radius.circular(4), // Control thumb roundness
               ),
-              child: Scrollbar(
-                // thickness: 1, // Set a smaller thickness for a narrower scrollbar
                 child: ListView(
                   children: [
                     Padding(
@@ -198,7 +196,6 @@ class _CategorySelectorState extends State<CategorySelector> {
                       CategorySection(subcategory: subcategory),
                   ],
                 ),
-              ),
             ),
           ),
         ],
@@ -215,87 +212,86 @@ class CategorySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            subcategory,
-            style: TextStyle(
-              fontFamily: 'Manrope', // Custom font family
-              fontSize: 14, // Matches font-size: 14px
-              fontWeight: FontWeight.w600, // Matches font-weight: 600
-              height:
-                  1.29, // Matches line-height: 18px / 14px (18px / 14px = ~1.29)
-            ),
-          ),
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        subcategory,
+        style: TextStyle(
+          fontFamily: 'Manrope', // Custom font family
+          fontSize: 14, // Matches font-size: 14px
+          fontWeight: FontWeight.w600, // Matches font-weight: 600
+          height: 1.29, // Matches line-height: 18px / 14px
         ),
-        SizedBox(
-          height: 200,
-          child: GridView.builder(
-            scrollDirection: Axis.horizontal,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 8,
-              crossAxisSpacing: 8,
-              childAspectRatio: 0.75,
-            ),
-            itemCount: 6, // Number of items in each subcategory
-            itemBuilder: (context, index) {
-              return Container(
-                // elevation: 4,
-                // shape: RoundedRectangleBorder(
-                //   borderRadius: BorderRadius.circular(8),
-                // ),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: ClipRRect(
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(8)),
-                        child: Image.asset(
-                          'assets/image.png', // Replace with actual image path
-                          fit: BoxFit.cover,
-                        ),
+      ),
+    ),
+    SizedBox(
+      height: 250,
+      child: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(), // Disables scrolling
+        child: GridView.builder(
+          shrinkWrap: true, // Allows GridView to occupy only needed space
+          physics: NeverScrollableScrollPhysics(), // Disables scrolling in GridView
+          scrollDirection: Axis.vertical,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 8,
+            childAspectRatio: 0.75,
+          ),
+          itemCount: 6, // Number of items in each subcategory
+          itemBuilder: (context, index) {
+            return Container(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                      child: Image.asset(
+                        'assets/image.png', // Replace with actual image path
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    Container(
-                      width: 67.98,
-                      height: 21.24,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.white, width: 0.5),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.06),
-                            blurRadius: 6.0,
-                            offset: Offset(0, 2),
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Fusion Wear', // Replace with actual text
-                          style: TextStyle(
-                            fontFamily: 'Manrope',
-                            fontWeight: FontWeight.w500,
-                            fontSize: 10,
-                            height:
-                                1.8, // This sets the line-height (line height divided by font size)
-                            color: Colors.black.withOpacity(0.8),
-                          ),
-                          textAlign: TextAlign.center,
+                  ),
+                  Container(
+                    width: 67.98,
+                    height: 21.24,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.white, width: 0.5),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.06),
+                          blurRadius: 6.0,
+                          offset: Offset(0, 2),
                         ),
+                      ],
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Fusion Wear', // Replace with actual text
+                        style: TextStyle(
+                          fontFamily: 'Manrope',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 10,
+                          height: 1.8,
+                          color: Colors.black.withOpacity(0.8),
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
-                  ],
-                ),
-              );
-            },
-          ),
+                  ),
+                ],
+              ),
+            );
+          },
         ),
-      ],
-    );
+      ),
+    ),
+  ],
+);
+
   }
 }
