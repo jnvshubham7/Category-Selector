@@ -150,7 +150,7 @@ class _CategorySelectorState extends State<CategorySelector> {
                       child: Column(
                         children: [
                           CircleAvatar(
-                            backgroundColor: Color(0xFFE5E5E5),
+                            // backgroundColor: Color(0xFFE5E5E5),
                             backgroundImage: AssetImage(
 
                                 // 'assets/kids.png',
