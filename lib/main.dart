@@ -86,59 +86,75 @@ class _CategorySelectorState extends State<CategorySelector> {
                 right: BorderSide(color: Colors.grey[300]!, width: 1),
               ),
             ),
-            child: ListView.builder(
-              itemCount: categorizedItems.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _selectedCategoryIndex = index;
-                    });
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: index == _selectedCategoryIndex
-                          ? Colors.white
-                          : Colors.grey[100],
-                      border: Border(
-                        left: BorderSide(
-                          color: index == _selectedCategoryIndex
-                              ? Color(
-                                  0xFF8034DA) // Customize border color for selection
-                              : Colors.transparent,
-                          width: 4,
+            child: ScrollConfiguration(
+              behavior: ScrollConfiguration.of(context).copyWith(
+                scrollbars: false,
+              ),
+              child: ListView.builder(
+                itemCount: categorizedItems.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _selectedCategoryIndex = index;
+                      });
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: index == _selectedCategoryIndex
+                            ? Colors.white
+                            : Colors.grey[100],
+                        border: Border(
+                          left: BorderSide(
+                            color: index == _selectedCategoryIndex
+                                ? Color(
+                                    0xFF8034DA) // Customize border color for selection
+                                : Colors.transparent,
+                            width: 4,
+                            
+                            
+                          ),
+
+                          bottom: BorderSide(
+                            color: Colors.grey[300]!,
+                            width: 1,
+                          ),
                         ),
+
+
+                      ),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            backgroundImage: AssetImage(
+                                'assets/icon.png'), // Replace with category-specific icon
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            categorizedItems[index]["category"],
+                            style: TextStyle(
+                              fontFamily:
+                                  'Manrope', // Make sure to add the Manrope font in your pubspec.yaml
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              height: 18 / 12, // line-height: 18px
+                              color: index == _selectedCategoryIndex
+                                  ? Colors.black
+                                  : Colors.black54,
+                            ),
+                            textAlign: TextAlign.center, // Centering the text
+                          ),
+
+                          // Add a divider to separate each category
+                          
+                        ],
                       ),
                     ),
-                    padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          backgroundImage: AssetImage(
-                              'assets/icon.png'), // Replace with category-specific icon
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          categorizedItems[index]["category"],
-                          style: TextStyle(
-                            fontFamily:
-                                'Manrope', // Make sure to add the Manrope font in your pubspec.yaml
-                            fontSize: 12, // font-size: 12px;
-                            fontWeight: FontWeight.w500, // font-weight: 500;
-                            height: 18 /
-                                12, // line-height: 18px; (line-height in TextStyle is a multiplier)
-                            color: index == _selectedCategoryIndex
-                                ? Colors.black
-                                : Colors.black54,
-                            // textAlign: TextAlign.center, // Optional, add if you need to center the text
-                          ),
-                          textAlign: TextAlign.center, // Centering the text
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
 
