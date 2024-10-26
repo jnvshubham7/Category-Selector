@@ -27,36 +27,160 @@ class _CategorySelectorState extends State<CategorySelector> {
   final List<Map<String, dynamic>> categorizedItems = [
     {
       "category": "Kids",
-      "subcategories": ["Boys", "Girls", "Toys", "Clothing"]
+      "subcategories": [
+        {
+          "name": "Boys",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1604924617861-1f6b9c006750"
+        },
+        {
+          "name": "Girls",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1603415526960-f0b8b201bf33"
+        },
+        {
+          "name": "Toys",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1549924231-f129b911e442"
+        },
+        {
+          "name": "Clothing",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1518888905879-d9c5d9b0f871"
+        },
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1598133894009-0c86e0d20800"
     },
     {
       "category": "Mobile",
-      "subcategories": ["Smartphones", "Accessories", "Tablets"]
+      "subcategories": [
+        {
+          "name": "Smartphones",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
+        },
+        {
+          "name": "Accessories",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1598327102325-fec12a1575c8"
+        },
+        {
+          "name": "Tablets",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1581579185760-392f942b60d2"
+        },
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1561154464-d1133824d497"
     },
     {
       "category": "Electronics",
-      "subcategories": ["Laptops", "Cameras", "Accessories"]
+      "subcategories": [
+        {
+          "name": "Laptops",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1517336714731-489689fd1ca8"
+        },
+        {
+          "name": "Cameras",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1519183071298-a2962e4a2448"
+        },
+        {
+          "name": "Accessories",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1600331984287-3e4e4e16fc31"
+        },
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1593642634315-48f5414c3ad9"
     },
     {
       "category": "Women",
       "subcategories": [
-        "Upper wear",
-        "Lower wear",
-        "Beauty Product",
-        "Inner wear"
-      ]
+        {
+          "name": "Upper wear",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1531902453781-a4c50bfe5f24"
+        },
+        {
+          "name": "Lower wear",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1560807707-8cc77767d783"
+        },
+        {
+          "name": "Beauty Product",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1522336572468-8b7f71e52732"
+        },
+        {
+          "name": "Inner wear",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1592878849129-f55b38c262e3"
+        },
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1519882180494-77cd4d30aa0d"
     },
     {
       "category": "Men",
-      "subcategories": ["Shirts", "Pants", "Accessories"]
+      "subcategories": [
+        {
+          "name": "Shirts",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1583228242-96f67e32b396"
+        },
+        {
+          "name": "Pants",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1588392382834-a891154bca4d"
+        },
+        {
+          "name": "Accessories",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1517260739337-3a6cfa3f76c2"
+        },
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b"
     },
     {
       "category": "Decor",
-      "subcategories": ["Wall Art", "Lighting", "Furniture"]
+      "subcategories": [
+        {
+          "name": "Wall Art",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1579888613761-f315f8d3f7f1"
+        },
+        {
+          "name": "Lighting",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1519710164239-da123dc03ef4"
+        },
+        {
+          "name": "Furniture",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1560185127-6f28dc2b7e43"
+        },
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4"
     },
     {
       "category": "Furniture",
-      "subcategories": ["Sofas", "Tables", "Chairs"]
+      "subcategories": [
+        {
+          "name": "Sofas",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1560448071-32f681f2022b"
+        },
+        {
+          "name": "Tables",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1519710164239-da123dc03ef4"
+        },
+        {
+          "name": "Chairs",
+          "imageUrl":
+              "https://images.unsplash.com/photo-1524758631624-e2822e304c36"
+        },
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161b3e59b"
     },
   ];
 
@@ -121,7 +245,8 @@ class _CategorySelectorState extends State<CategorySelector> {
                       child: Column(
                         children: [
                           CircleAvatar(
-                            backgroundImage: AssetImage('assets/icon.png'),
+                            backgroundImage: NetworkImage(
+                                categorizedItems[index]["imageUrl"]),
                           ),
                           SizedBox(height: 8),
                           Text(
@@ -179,10 +304,12 @@ class _CategorySelectorState extends State<CategorySelector> {
                       ],
                     ),
                   ),
-                  for (String subcategory
+                  for (var subcategory
                       in categorizedItems[_selectedCategoryIndex]
                           ["subcategories"])
-                    CategorySection(subcategory: subcategory),
+                    CategorySection(
+                      subcategory: subcategory,
+                    ),
                 ],
               ),
             ),
@@ -194,7 +321,7 @@ class _CategorySelectorState extends State<CategorySelector> {
 }
 
 class CategorySection extends StatelessWidget {
-  final String subcategory;
+  final Map<String, dynamic> subcategory;
 
   CategorySection({required this.subcategory});
 
@@ -206,7 +333,7 @@ class CategorySection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            subcategory,
+            subcategory['name'], // Access subcategory name here
             style: TextStyle(
               fontFamily: 'Manrope',
               fontSize: 14,
@@ -236,10 +363,9 @@ class CategorySection extends StatelessWidget {
                     children: [
                       Expanded(
                         child: ClipRRect(
-                          borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(8)),
-                          child: Image.asset(
-                            'assets/image.png',
+                          borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                          child: Image.network(
+                            subcategory["imageUrl"], // Use subcategory's image URL
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -284,3 +410,4 @@ class CategorySection extends StatelessWidget {
     );
   }
 }
+
