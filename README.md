@@ -1,21 +1,52 @@
-<<<<<<< HEAD
-# Category-Selector
 
-A new Flutter project.
+# Category Selector Flutter App
+
+This Flutter app provides a categorized shopping experience, allowing users to explore different categories and subcategories with a clean and intuitive UI. Each category includes an icon and various subcategories, making it easy for users to navigate through different types of products.
+
+## Features
+
+- **Category Selection**: View and select from various categories like Kids, Mobile, Electronics, Women, Men, Decor, and Furniture.
+- **Subcategory Navigation**: After selecting a category, users can explore detailed subcategories.
+- **Responsive Design**: Optimized for mobile screens with smooth scrolling and beautiful icons.
+
+## Screenshot
+
+![1730865024377](image/README/1730865024377.png)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run this app locally:
 
-A few resources to get you started if this is your first Flutter project:
+1. **Clone the repository:**
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+   ```bash
+   git clone https://github.com/jnvshubham7/Category-Selector.git
+   cd Category-Selector
+   ```
+2. **Install dependencies:**
+   Make sure you have Flutter installed, then run:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# category_selector_app
-![Screenshot_2024-10-26-16-05-16-07_ba18d094c8e2302f8dd3434e9ba1cd94](https://github.com/user-attachments/assets/f1907054-9eb0-46e7-9aa0-7d3306f7cb1b)
->>>>>>> old/main
+   ```bash
+   flutter pub get
+   ```
+3. **Run the app:**
+   Use the command below to start the app on an emulator or connected device:
+
+   ```bash
+   flutter run
+   ```
+
+## File Structure
+
+- **`main.dart`**: Entry point of the app.
+- **`CategorySelector`**: Core widget displaying categories with icons and subcategories.
+- **`assets/`**: Folder containing icons and images used in the app.
+
+## Dependencies
+
+- **Flutter SDK**
+- **Icons**: Ensure the assets (e.g., `assets/kids.png`, `assets/phone.png`) are present in the `assets/` folder and specified in the `pubspec.yaml`.
+
+## License
+
+This project is licensed under the MIT License.
