@@ -11,7 +11,7 @@ This Flutter app provides a categorized shopping experience, allowing users to e
 
 ## Screenshot
 
-![1730865024377](image/README/1730865024377.png)
+<img src="image/README/1730865024377.png" alt="Category Selector App Screenshot" width="200" height="500">
 
 ## Getting Started
 
